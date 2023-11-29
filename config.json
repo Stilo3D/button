@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "logo": "https://www.autologyx.com/wp-content/uploads/2020/09/favicon.png",
+  "publisher": "ALX",
+  "publisher_url": "https://www.autologyx.com/",
+  "parameters": [
+    {
+      "parameter_name": "primary_color",
+      "parameter_description": "Enter a hex color.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "secondary_color",
+      "parameter_description": "Enter a hex color.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "tertiary_color",
+      "parameter_description": "Enter a hex color.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "nav_and_background_colors",
+      "parameter_description": "Enter a hex color.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "background_colors",
+      "parameter_description": "Enter a hex color.",
+      "parameter_type": "string"
+    }
+  ]
+}
