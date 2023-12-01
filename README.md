@@ -49,7 +49,7 @@ The first thing I suggest doing is adding in the parameters that you will be usi
 
 Screen shot for how the config is used to construct parameter input fields in Catalyst
 
-![Catalyst property input fields](/img\property_fields.png)
+![Catalyst property input fields](/img/property_fields.png)
 
 ### Table of allowed fields in the config.json
 
