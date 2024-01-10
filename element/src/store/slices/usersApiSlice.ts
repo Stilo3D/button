@@ -11,6 +11,16 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    refreshToken: builder.mutation<
+      LoginRs,
+      { baseUrl: string; refreshToken: string }
+    >({
+      query: ({ refreshToken, baseUrl }) => ({
+        url: `${baseUrl}${ApiEndpoint.RefreshToken}`,
+        method: "POST",
+        body: { refresh: refreshToken },
+      }),
+    }),
     getUser: builder.query<UserInfo, { baseUrl: string; token: string }>({
       query: ({ baseUrl, token }) => ({
         url: `${baseUrl}${ApiEndpoint.Users}me/`,
@@ -23,4 +33,5 @@ export const userApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useGetUserQuery } = userApiSlice;
+export const { useLoginMutation, useGetUserQuery, useRefreshTokenMutation } =
+  userApiSlice;

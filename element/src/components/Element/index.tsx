@@ -1,7 +1,12 @@
+import { Alert } from "antd";
+import { useAppDispatch, useAppSelector } from "../../hooks/useCustomReduxHook";
 import { useTheme } from "../../hooks/useTheme";
+import { getErrors, removeError } from "../../store/slices/helperSlice";
 
 const Element = () => {
+  const dispatch = useAppDispatch();
   const { theme } = useTheme();
+  const errors = useAppSelector((state) => getErrors(state));
   return (
     <>
       <div
@@ -9,6 +14,16 @@ const Element = () => {
         style={{ backgroundColor: theme.background_color }}
       >
         <div className="text-center text-5xl font-bold">Your Element Here!</div>
+        {!!errors.length && (
+          <Alert
+            className="w-full text-center"
+            type="error"
+            showIcon
+            closable
+            onClose={() => dispatch(removeError(errors[0]?.name))}
+            message={`${errors[0]?.name}:  ${errors[0]?.message}`}
+          />
+        )}
       </div>
     </>
   );

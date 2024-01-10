@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./slices/apiSlice";
 import authSliceReducer from "./slices/authSlice";
 import messageDataSliceReducer from "./slices/messageDataSlice";
+import helperSliceReducer from "./slices/helperSlice";
 
 const store = configureStore({
   reducer: {
@@ -9,6 +10,7 @@ const store = configureStore({
 
     auth: authSliceReducer,
     messageData: messageDataSliceReducer,
+    helper: helperSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
