@@ -57,26 +57,11 @@ export interface Parameters {
 
 // Parameters that will be passed into the app from the iframe from the config.json file.
 export interface ParameterData {
-  layout_1?: string;
-  theme_1?: string;
-  configuration_1?: string;
-  roles_groups_1?: string;
-  layout_2?: string;
-  theme_2?: string;
-  configuration_2?: string;
-  roles_groups_2?: string;
-  layout_3?: string;
-  theme_3?: string;
-  configuration_3?: string;
-  roles_groups_3?: string;
-  layout_4?: string;
-  theme_4?: string;
-  configuration_4?: string;
-  roles_groups_4?: string;
-  layout_5?: string;
-  theme_5?: string;
-  configuration_5?: string;
-  roles_groups_5?: string;
+  primary_color?: string;
+  secondary_color?: string;
+  tertiary_color?: string;
+  nav_and_background_colors?: string;
+  background_color?: string;
 }
 
 export interface MessageData {
