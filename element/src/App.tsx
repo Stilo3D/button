@@ -5,7 +5,7 @@ import { useAppDispatch } from "./hooks/useCustomReduxHook";
 import { useEffect } from "react";
 import { populateMessageData } from "./store/slices/messageDataSlice";
 import { useGetAccessToken } from "./hooks/useGetAccessToken";
-import Loader from "./components/Loader";
+import { Loader } from "alx-elements";
 import { Alert } from "antd";
 
 function App({ messageData }: { messageData: MessageData }) {

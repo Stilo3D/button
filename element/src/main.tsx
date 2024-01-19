@@ -6,10 +6,10 @@ import App from "./App.tsx";
 import "./index.css";
 import "./global.css";
 import { MessageData } from "./types/interfaces.ts";
-import Loader from "./components/Loader/index.tsx";
+import { Loader } from "alx-elements";
 
 const el = document.getElementById("root")!;
-const root = ReactDOM.createRoot(el)
+const root = ReactDOM.createRoot(el);
 
 // Add an event listener for the message data when message data is received render the App with the message data
 const messageEventListener = (event: MessageEvent) => {

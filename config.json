@@ -5,28 +5,103 @@
   "publisher_url": "https://www.autologyx.com/",
   "parameters": [
     {
-      "parameter_name": "primary_color",
-      "parameter_description": "Enter a hex color.",
+      "parameter_name": "layout_1",
+      "parameter_description": "Enter the layout 1 config.",
       "parameter_type": "string"
     },
     {
-      "parameter_name": "secondary_color",
-      "parameter_description": "Enter a hex color.",
+      "parameter_name": "theme_1",
+      "parameter_description": "Enter the theme 1 config.",
       "parameter_type": "string"
     },
     {
-      "parameter_name": "tertiary_color",
-      "parameter_description": "Enter a hex color.",
+      "parameter_name": "configuration_1",
+      "parameter_description": "Enter the configuration 1 config.",
       "parameter_type": "string"
     },
     {
-      "parameter_name": "nav_and_background_colors",
-      "parameter_description": "Enter a hex color.",
+      "parameter_name": "roles_groups_1",
+      "parameter_description": "Enter the roles/groups 1 config.",
       "parameter_type": "string"
     },
     {
-      "parameter_name": "background_colors",
-      "parameter_description": "Enter a hex color.",
+      "parameter_name": "layout_2",
+      "parameter_description": "Enter the layout 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "theme_2",
+      "parameter_description": "Enter the theme 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "configuration_2",
+      "parameter_description": "Enter the configuration 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "roles_groups_2",
+      "parameter_description": "Enter the roles/groups 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "layout_3",
+      "parameter_description": "Enter the layout 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "theme_3",
+      "parameter_description": "Enter the theme 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "configuration_3",
+      "parameter_description": "Enter the configuration 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "roles_groups_3",
+      "parameter_description": "Enter the roles/groups 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "layout_4",
+      "parameter_description": "Enter the layout 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "theme_4",
+      "parameter_description": "Enter the theme 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "configuration_4",
+      "parameter_description": "Enter the configuration 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "roles_groups_4",
+      "parameter_description": "Enter the roles/groups 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "layout_5",
+      "parameter_description": "Enter the layout 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "theme_5",
+      "parameter_description": "Enter the theme 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "configuration_5",
+      "parameter_description": "Enter the configuration 1 config.",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "roles_groups_5",
+      "parameter_description": "Enter the roles/groups 1 config.",
       "parameter_type": "string"
     }
   ]

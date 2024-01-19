@@ -45,14 +45,36 @@
           endpoint: "http://localhost:3001", //same port as the proxy
           component_parameters: [],
           parameters: {
-            primary_color: "#5A88DB",
-            secondary_color: "#7C8664",
-            tertiary_color: "#DB6D5A",
-            nav_and_background_colors: "#333333",
-            background_color: "#DEDEDE",
+            layout_1: `[
+                {"rowStart":"1","rowEnd":"2","colStart":"1","colEnd":"-1","element":"banner","id":"1"},
+                {"rowStart":"2","rowEnd":"3","colStart":"1","colEnd":"3","element":"task Chart 1","id":"1"},
+                {"rowStart":"2","rowEnd":"3","colStart":"3","colEnd":"5","element":"task Chart 2","id":"1"},
+                {"rowStart":"2","rowEnd":"5","colStart":"5","colEnd":"-1","element":"stat Cards","id":"1"},
+                {"rowStart":"3","rowEnd":"4","colStart":"1","colEnd":"5","element":"Search","id":"1"},
+                {"rowStart":"4","rowEnd":"5","colStart":"1","colEnd":"5","element":"Data Importer","id":"1"}
+              ]`,
+            theme_1: "{}",
+            configuration_1: "{}",
+            roles_groups_1: `{"roles":["1"], "groups":["a"]}`,
+            layout_2: `[
+            {"rowStart":"1","rowEnd":"2","colStart":"1","colEnd":"-1","element":"banner","id":"1"},
+            {"rowStart":"2","rowEnd":"4","colStart":"3","colEnd":"5","element":"task Chart 1","id":"1"},
+            {"rowStart":"2","rowEnd":"4","colStart":"1","colEnd":"3","element":"stat Cards","id":"1"},
+            {"rowStart":"2","rowEnd":"4","colStart":"5","colEnd":"-1","element":"stat Cards","id":"2"}
+            ]`,
+            theme_2: "{}",
+            configuration_2: "{}",
+            roles_groups_2: `{"roles":["2"], "groups":["b"]}`,
+            layout_3: `[
+            {"rowStart":"1","rowEnd":"2","colStart":"1","colEnd":"-1","element":"banner","id":"1"},
+            {"rowStart":"2","rowEnd":"4","colStart":"1","colEnd":"-1","element":"Data Importer","id":"1"}
+            ]`,
+            theme_3: "{}",
+            configuration_3: "{}",
+            roles_groups_3: `{"roles":["3"], "groups":["b"]}`,
           },
         };
-        window.postMessage(messageData, "http://localhost:5173/");
+        window.postMessage(messageData, "http://127.0.0.1:5173/");
       }, 2000);
     </script>
   </body>

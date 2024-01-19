@@ -22,6 +22,7 @@
     "@ant-design/icons": "^5.2.5",
     "@ant-design/plots": "^1.2.5",
     "@reduxjs/toolkit": "^1.9.7",
+    "alx-elements": "git+ssh://git@gitlab.autologyx.com:ps/alx-elements.git",
     "antd": "^5.8.5",
     "axios": "^1.6.0",
     "lodash": "^4.17.21",
