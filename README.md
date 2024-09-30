@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ALX Element Boilerplate
 
 ### Description
@@ -165,3 +166,6 @@ If you get the following error then you need to check that you have entered the 
 A good starting point to in the element\src\components\Element\index.tsx.
 
 ### If you have any issues or question then you can raise a Zendesk support ticket or alternatively you can raise an issue in this repo and I will do my best to respond the same day.
+=======
+# button
+>>>>>>> main
