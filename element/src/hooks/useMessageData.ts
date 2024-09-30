@@ -1,8 +1,7 @@
 import { MessageData } from "../types/interfaces";
-import { useMsgDataStore } from "../zustandStore/store";
+import { useMsgDataStore } from "../store/store";
 
 export const useMessageData = () => {
-  // const accessToken = USEEEEESELECTOR((state) => getAccessToken(state));
   const accessToken = useMsgDataStore(
     (state) => state.messageData?.user_details.access_token
   );
@@ -10,14 +9,9 @@ export const useMessageData = () => {
 
   window.addEventListener("message", (event) => {
     const newMessageData: MessageData = event.data || {};
+    const newToken = newMessageData?.user_details?.access_token;
 
-    if (newMessageData.user_details) {
-      if (typeof newMessageData.user_details.access_token === "string") {
-        if (newMessageData.user_details.access_token !== accessToken) {
-          // DISPATTCHHHupdateAccessToken(newMessageData.user_details.access_token));
-          setAccessToken(newMessageData.user_details.access_token);
-        }
-      }
-    }
+    if (newToken && newToken !== accessToken)
+      setAccessToken(newMessageData.user_details.access_token);
   });
 };

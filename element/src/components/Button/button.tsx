@@ -1,6 +1,7 @@
 import { Button, Typography } from "antd";
 import "./button.css";
-import { useMsgDataStore } from "../../zustandStore/store";
+import { useMsgDataStore } from "../../store/store";
+import { useUpdateRecordData } from "../../hooks/useUpdateRecordField";
 
 type ButtonProps = {
   label?: string;
@@ -11,9 +12,17 @@ type ButtonProps = {
 
 const ButtonWrapper = ({ label, colour, height, width }: ButtonProps) => {
   const state = useMsgDataStore((state) => state);
+  const messageData = useMsgDataStore((state) => state.messageData);
+  const addError = useMsgDataStore((state) => state.addStoreError);
+  const field = messageData?.parameters?.field;
+  const value = messageData?.parameters?.value;
+  const { updateRecordField } = useUpdateRecordData();
 
   const onClick = () => {
     console.log("Button Clicked", state);
+    if (field && value) updateRecordField(field, value);
+    else
+      addError({ name: "Field Error", message: "Field or Value is missing" });
   };
 
   return (
@@ -25,7 +34,7 @@ const ButtonWrapper = ({ label, colour, height, width }: ButtonProps) => {
           height: height ?? "30px",
           width: width ?? "80px",
         }}
-        onClick={onClick}
+        onClick={() => onClick()}
         className="buttonBasicView"
       >
         <Typography.Text
