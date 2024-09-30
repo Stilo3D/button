@@ -1,0 +1,13 @@
+{
+  "version": "2.0.1",
+  "logo": "https://www.autologyx.com/wp-content/uploads/2020/09/favicon.png",
+  "publisher": "ALX",
+  "publisher_url": "https://www.autologyx.com/",
+  "parameters": [
+    {
+      "parameter_name": "configuration",
+      "parameter_description": "Enter a button configuration.",
+      "parameter_type": "string"
+    }
+  ]
+}

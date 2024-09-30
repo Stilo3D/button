@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Boilerplate</title>
+  </head>
+  <style>
+    /* custom.css */
+    /* body {
+      overflow: hidden;
+    } */
+    .scrollbar-none::-webkit-scrollbar {
+      width: 0.5em; /* Adjust the width as per your preference */
+    }
+
+    .scrollbar-none::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    .scrollbar-none::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  </style>
+  <body class="scrollbar-none">
+    <div id="root" class="scrollbar-none"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Uncomment the below for testing with the parameters passed in to the messageData -->
+    <script>
+      setTimeout(() => {
+        console.log("Running post message script.");
+        const messageData = {
+          user_details: {
+            access_token: "",
+            first_name: "",
+            last_name: "",
+            user_id: "5",
+            user_name: "",
+          },
+          object_record_meta: {
+            class_id: "464",
+            record_id: "",
+          },
+          endpoint: "http://localhost:3001", //same port as the proxy
+          component_parameters: [],
+          parameters: {
+            primary_color: "#5A88DB",
+            secondary_color: "#7C8664",
+            tertiary_color: "#DB6D5A",
+            nav_and_background_colors: "#333333",
+            background_color: "#DEDEDE",
+          },
+        };
+        window.postMessage(messageData, "http://localhost:5173/");
+      }, 2000);
+    </script>
+  </body>
+</html>
