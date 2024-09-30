@@ -1,13 +1,12 @@
-import {
-  getAccessToken,
-  updateAccessToken,
-} from "../store/slices/messageDataSlice";
 import { MessageData } from "../types/interfaces";
-import { useAppDispatch, useAppSelector } from "./useCustomReduxHook";
+import { useMsgDataStore } from "../zustandStore/store";
 
 export const useMessageData = () => {
-  const dispatch = useAppDispatch();
-  const accessToken = useAppSelector((state) => getAccessToken(state));
+  // const accessToken = USEEEEESELECTOR((state) => getAccessToken(state));
+  const accessToken = useMsgDataStore(
+    (state) => state.messageData?.user_details.access_token
+  );
+  const setAccessToken = useMsgDataStore((state) => state.setAccessToken);
 
   window.addEventListener("message", (event) => {
     const newMessageData: MessageData = event.data || {};
@@ -15,7 +14,8 @@ export const useMessageData = () => {
     if (newMessageData.user_details) {
       if (typeof newMessageData.user_details.access_token === "string") {
         if (newMessageData.user_details.access_token !== accessToken) {
-          dispatch(updateAccessToken(newMessageData.user_details.access_token));
+          // DISPATTCHHHupdateAccessToken(newMessageData.user_details.access_token));
+          setAccessToken(newMessageData.user_details.access_token);
         }
       }
     }

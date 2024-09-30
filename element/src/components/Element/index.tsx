@@ -1,33 +1,43 @@
 import { Alert } from "antd";
-import { useAppDispatch, useAppSelector } from "../../hooks/useCustomReduxHook";
-import { useTheme } from "../../hooks/useTheme";
-import { getErrors, removeError } from "../../store/slices/helperSlice";
+// import {
+//   useAppDispatch,
+//   USEEEEESELECTOR,
+// } from "../../hooks/useCustomReduxHook";
+// import { getErrors, removeError } from "../../store/slices/helperSlice";
 import ButtonWrapper from "../Button/button";
+import { useEffect } from "react";
+import { useMsgDataStore } from "../../zustandStore/store";
 
 const Element = () => {
-  const dispatch = useAppDispatch();
-  const { theme } = useTheme();
-  const errors = useAppSelector((state) => getErrors(state));
+  // const dispatch = useAppDISPATTCHHH);
+  // const errors = USEEEEESELECTOR((state) => getErrors(state));
+  const errors = useMsgDataStore((state) => state.storeError);
+  const msgDataFromStore = useMsgDataStore((state) => state.messageData);
+  const parameters = msgDataFromStore?.parameters;
+  const { label, colour, width, height } = parameters ?? {};
+
+  useEffect(() => {
+    console.log("useeffecty in element", msgDataFromStore);
+  }, [msgDataFromStore]);
+
   return (
     <>
-      <div
-        className="flex w-screen h-screen justify-center items-center  px-0 md:px-12 lg:px-16 xl:px-20 2xl:px-24"
-        style={{ backgroundColor: theme.background_color }}
-      >
-        <div className="text-center text-5xl font-bold">
-          <ButtonWrapper label={"Text"} />
-        </div>
-        {!!errors.length && (
-          <Alert
-            className="w-full text-center"
-            type="error"
-            showIcon
-            closable
-            onClose={() => dispatch(removeError(errors[0]?.name))}
-            message={`${errors[0]?.name}:  ${errors[0]?.message}`}
-          />
-        )}
-      </div>
+      <ButtonWrapper
+        label={label}
+        width={width}
+        colour={colour}
+        height={height}
+      />
+      {!!errors.length && (
+        <Alert
+          className="w-full text-center"
+          type="error"
+          showIcon
+          closable
+          // onClose={() => DISPATTCHHHremoveError(errors[0]?.name))}
+          message={`${errors[0]?.name}:  ${errors[0]?.message}`}
+        />
+      )}
     </>
   );
 };

@@ -1,23 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "./slices/apiSlice";
-import authSliceReducer from "./slices/authSlice";
-import messageDataSliceReducer from "./slices/messageDataSlice";
-import helperSliceReducer from "./slices/helperSlice";
+// import { configureStore } from "@reduxjs/toolkit";
+// import { apiSlice } from "./slices/apiSlice";
+// import authSliceReducer from "./slices/authSlice";
+// import messageDataSliceReducer from "./slices/messageDataSlice";
+// import helperSliceReducer from "./slices/helperSlice";
 
-const store = configureStore({
-  reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer,
+// const store = configureStore({
+//   reducer: {
+//     [apiSlice.reducerPath]: apiSlice.reducer,
 
-    auth: authSliceReducer,
-    messageData: messageDataSliceReducer,
-    helper: helperSliceReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: process.env.NODE_ENV === "development",
-});
+//     auth: authSliceReducer,
+//     messageData: messageDataSliceReducer,
+//     helper: helperSliceReducer,
+//   },
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware().concat(apiSlice.middleware),
+//   devTools: process.env.NODE_ENV === "development",
+// });
 
-export default store;
+// export default store;
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// export type RootState = ReturnType<typeof store.getState>;
+// export type AppDispatch = typeof store.dispatch;
