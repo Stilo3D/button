@@ -5,8 +5,23 @@
   "publisher_url": "https://www.autologyx.com/",
   "parameters": [
     {
-      "parameter_name": "configuration",
-      "parameter_description": "Enter a button configuration.",
+      "parameter_name": "colour",
+      "parameter_description": "Enter a colour of the button (hex value)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "label",
+      "parameter_description": "Enter a button label (string)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "height",
+      "parameter_description": "Enter a button height (px unit)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "width",
+      "parameter_description": "Enter a button width (px unit)",
       "parameter_type": "string"
     }
   ]

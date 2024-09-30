@@ -57,6 +57,10 @@ export interface Parameters {
 
 // Parameters that will be passed into the app from the iframe from the config.json file.
 export interface ParameterData {
+  label?: string;
+  width?: string;
+  height?: string;
+  colour?: string;
   primary_color?: string;
   secondary_color?: string;
   tertiary_color?: string;

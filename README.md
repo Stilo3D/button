@@ -1,11 +1,12 @@
 <<<<<<< HEAD
+
 # ALX Element Boilerplate
 
 ### Description
 
 This boilerplate has been designed to help you get started to create your own elements that can be used in the ALX Catalyst application.  
 The boilerplate handles getting the access token allowing API access for development on your localhost it uses the [redux-toolkit](https://redux-toolkit.js.org/rtk-query/usage/queries) to handle the api calls with some basic endpoints added.  
-The boilerplate posts the messageData into the rect application from the index.html file allowing you to simulate Catalyst passing in the parameters, this is then saved into the redux store allowing access from any react component using the useAppSelector hook.  
+The boilerplate posts the messageData into the rect application from the index.html file allowing you to simulate Catalyst passing in the parameters, this is then saved into the redux store allowing access from any react component using the USEEEEESELECTOR hook.  
 There is a useTheme that is used to handle the basic theme colors and this mirrors the theme within Catalyst so you can copy the #colors over or use your own theme colors.
 
 ### Getting Started
@@ -166,6 +167,9 @@ If you get the following error then you need to check that you have entered the 
 A good starting point to in the element\src\components\Element\index.tsx.
 
 ### If you have any issues or question then you can raise a Zendesk support ticket or alternatively you can raise an issue in this repo and I will do my best to respond the same day.
+
 =======
+
 # button
->>>>>>> main
+
+> > > > > > > main

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-import store from "./store/store.ts";
+// import { Provider } from "react-redux";
+// import store from "./store/store.ts";
 import App from "./App.tsx";
 import "./index.css";
 import "./global.css";
@@ -9,7 +9,7 @@ import { MessageData } from "./types/interfaces.ts";
 import Loader from "./components/Loader/index.tsx";
 
 const el = document.getElementById("root")!;
-const root = ReactDOM.createRoot(el)
+const root = ReactDOM.createRoot(el);
 
 // Add an event listener for the message data when message data is received render the App with the message data
 const messageEventListener = (event: MessageEvent) => {
@@ -17,9 +17,7 @@ const messageEventListener = (event: MessageEvent) => {
   if (newMessageData.user_details) {
     root.render(
       <React.StrictMode>
-        <Provider store={store}>
-          <App messageData={newMessageData} />
-        </Provider>
+        <App messageData={newMessageData} />
       </React.StrictMode>
     );
     window.removeEventListener("message", messageEventListener);

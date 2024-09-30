@@ -1,9 +1,19 @@
 .buttonBasicView {
   border-radius: 3px;
+  font-weight: bold;
 }
 
 .buttonBasicView:hover {
-  box-shadow: 0 0 10px #98e0fe;
+  box-shadow: 0 0 10px #67d1ff;
+}
+
+.buttonContainer {
+  margin: 10px;
+}
+
+.labelEllipsis {
+  color: white;
+  padding-bottom: 2px;
 }
 
 /* Latching equal to false
