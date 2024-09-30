@@ -2,6 +2,7 @@ import { Alert } from "antd";
 import { useAppDispatch, useAppSelector } from "../../hooks/useCustomReduxHook";
 import { useTheme } from "../../hooks/useTheme";
 import { getErrors, removeError } from "../../store/slices/helperSlice";
+import ButtonWrapper from "../Button/button";
 
 const Element = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,9 @@ const Element = () => {
         className="flex w-screen h-screen justify-center items-center  px-0 md:px-12 lg:px-16 xl:px-20 2xl:px-24"
         style={{ backgroundColor: theme.background_color }}
       >
-        <div className="text-center text-5xl font-bold">Your Element Here!</div>
+        <div className="text-center text-5xl font-bold">
+          <ButtonWrapper label={"Text"} />
+        </div>
         {!!errors.length && (
           <Alert
             className="w-full text-center"
