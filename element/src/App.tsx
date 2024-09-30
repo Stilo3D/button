@@ -15,6 +15,7 @@ function App({ messageData }: { messageData: MessageData }) {
     if (messageData) {
       dispatch(populateMessageData(messageData));
     }
+    console.log("messageData", messageData);
   }, [messageData]);
 
   // used to updated teh access token when re passed into the iframe window.
