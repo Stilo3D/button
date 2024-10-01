@@ -63,11 +63,11 @@ export interface ParameterData {
   width?: string;
   height?: string;
   colour?: string;
-  primary_color?: string;
-  secondary_color?: string;
-  tertiary_color?: string;
-  nav_and_background_colors?: string;
-  background_color?: string;
+  latching?: boolean;
+  polling_time?: number;
+  message_processing?: string;
+  message_enabled ?: string;
+  message_disabled?: string;
 }
 
 export interface MessageData {

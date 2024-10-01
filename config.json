@@ -33,6 +33,31 @@
       "parameter_name": "value",
       "parameter_description": "Enter a new field value (string)",
       "parameter_type": "string"
+    },
+    {
+      "parameter_name": "latching",
+      "parameter_description": "Should the button be latching or not (boolean)",
+      "parameter_type": "boolean"
+    },
+    {
+      "parameter_name": "polling_time",
+      "parameter_description": "The time the system is checking if the sequence has been finished (number - seconds)",
+      "parameter_type": "number"
+    },
+    {
+      "parameter_name": "message_disabled",
+      "parameter_description": "",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "message_enabled ",
+      "parameter_description": "",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "message_processing",
+      "parameter_description": "",
+      "parameter_type": "string"
     }
   ]
 }

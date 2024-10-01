@@ -7,13 +7,15 @@ import Loader from "./components/Loader";
 import { Alert } from "antd";
 import { useMsgDataStore } from "./store/store";
 
-function App({ messageData }: { messageData: MessageData }) {
+const App = ({ messageData }: { messageData: MessageData }) => {
   const setMessageData = useMsgDataStore((state) => state.setMessageData);
   const storeErrors = useMsgDataStore((state) => state.storeError);
   const isLoading = useMsgDataStore((state) => state.isLoading);
 
   useEffect(() => {
-    if (messageData) setMessageData(messageData);
+    if (messageData) {
+      setMessageData(messageData);
+    }
   }, [messageData]);
 
   useMessageData();
@@ -22,6 +24,6 @@ function App({ messageData }: { messageData: MessageData }) {
   if (storeErrors) return <Alert message={storeErrors.message}></Alert>;
   if (isLoading) return <Loader />;
   return <Element />;
-}
+};
 
 export default App;

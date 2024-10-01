@@ -16,6 +16,7 @@ export const useGetAccessToken = () => {
   const refreshToken = useMsgDataStore((state) => state.refreshToken);
   const baseUrl = useMsgDataStore((state) => state.messageData?.endpoint) ?? "";
   const { useUserLogin, userRefreshTheRefreshToken } = zustandHooks();
+  const setIsLoading = useMsgDataStore((state) => state.setIsLoading);
 
   // the number of seconds the token is valid for
   const tokenValidFor = useMemo(() => 4.5 * 60, []);
@@ -53,27 +54,31 @@ export const useGetAccessToken = () => {
     };
   }, [tokenExpires]);
 
-  if (
-    !accessToken &&
-    process.env.NODE_ENV === "development" &&
-    USER_NAME &&
-    USER_PASSWORD &&
-    baseUrl
-  ) {
-    (async () => {
-      const token = await useUserLogin({
-        data: {
-          username: USER_NAME,
-          password: USER_PASSWORD,
-        },
-        baseUrl,
-      });
-      if ("access" in token) {
-        // set the token expiry time
-        setTokenExpires(dayjs().unix() + tokenValidFor);
-        setAccessToken(token.access);
-        setRefreshToken(token.refresh);
-      }
-    })();
-  }
+  useEffect(() => {
+    if (
+      !accessToken &&
+      process.env.NODE_ENV === "development" &&
+      USER_NAME &&
+      USER_PASSWORD &&
+      baseUrl
+    ) {
+      (async () => {
+        setIsLoading(true);
+        const token = await useUserLogin({
+          data: {
+            username: USER_NAME,
+            password: USER_PASSWORD,
+          },
+          baseUrl,
+        });
+        if ("access" in token) {
+          // set the token expiry time
+          setTokenExpires(dayjs().unix() + tokenValidFor);
+          setAccessToken(token.access);
+          setRefreshToken(token.refresh);
+        }
+        setIsLoading(false);
+      })();
+    }
+  }, [accessToken, baseUrl]);
 };

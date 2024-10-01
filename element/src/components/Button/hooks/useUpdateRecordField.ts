@@ -1,10 +1,11 @@
-import axios from "axios";
-import { useMsgDataStore } from "../store/store";
+import axios, { AxiosError } from "axios";
+import { useMsgDataStore } from "../../../store/store";
 
 export const useUpdateRecordData = () => {
   const recordId = useMsgDataStore(
     (state) => state.messageData?.object_record_meta.record_id
   );
+  const addError = useMsgDataStore((state) => state.addStoreError);
   const accessToken = useMsgDataStore(
     (state) => state.messageData?.user_details.access_token
   );
@@ -24,8 +25,13 @@ export const useUpdateRecordData = () => {
         }
       );
 
-      return response.data;
+      return { data: response.data, status: response.status };
     } catch (error) {
+      const errorData = error as AxiosError;
+      addError({
+        name: "Update Record Field Error",
+        message: errorData.message + ". Content: " + errorData.request?.response,
+      });
       throw error;
     }
   };
