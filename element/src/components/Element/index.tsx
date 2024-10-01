@@ -6,7 +6,7 @@ import { Alert } from "antd";
 // import { getErrors, removeError } from "../../store/slices/helperSlice";
 import ButtonWrapper from "../Button/button";
 import { useEffect } from "react";
-import { useMsgDataStore } from "../../zustandStore/store";
+import { useMsgDataStore } from "../../store/store";
 
 const Element = () => {
   // const dispatch = useAppDISPATTCHHH);
@@ -28,14 +28,14 @@ const Element = () => {
         colour={colour}
         height={height}
       />
-      {!!errors.length && (
+      {!!errors && (
         <Alert
           className="w-full text-center"
           type="error"
           showIcon
           closable
           // onClose={() => DISPATTCHHHremoveError(errors[0]?.name))}
-          message={`${errors[0]?.name}:  ${errors[0]?.message}`}
+          message={`${errors?.name}:  ${errors?.message}`}
         />
       )}
     </>

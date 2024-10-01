@@ -23,6 +23,16 @@
       "parameter_name": "width",
       "parameter_description": "Enter a button width (px unit)",
       "parameter_type": "string"
+    },
+    {
+      "parameter_name": "field",
+      "parameter_description": "Enter a field to manipulate (field alias)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "value",
+      "parameter_description": "Enter a new field value (string)",
+      "parameter_type": "string"
     }
   ]
 }
