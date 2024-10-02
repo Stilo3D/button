@@ -3,44 +3,41 @@ import "./button.css";
 import { useMsgDataStore } from "../../store/store";
 import { useEffect, useState } from "react";
 import { useRecordData } from "./hooks/useRecordData";
-
-type ButtonProps = {
-  label?: string;
-  colour?: string;
-  width?: string;
-  height?: string;
-  setButtonStatus: (status: number) => void;
-};
+import { ButtonProps } from "./types";
+import { defaultStyles } from "./defaults/defaultStyles";
+import { defaultData } from "./defaults/defaultData";
 
 const ButtonWrapper = ({
   label,
   colour,
   height,
   width,
-  setButtonStatus,
+  setButtonStatus, //used to define if button should be disabled or enabled or processing
 }: ButtonProps) => {
   const messageData = useMsgDataStore((state) => state.messageData);
   const addError = useMsgDataStore((state) => state.addStoreError);
   const isButtonLatching =
-    useMsgDataStore((state) => state.messageData?.parameters.latching) ?? true;
+    useMsgDataStore((state) => state.messageData?.parameters.latching) ??
+    defaultData.isButtonLatching;
   const pollingTime =
     useMsgDataStore((state) => state.messageData?.parameters.polling_time) ??
-    10; //set default value if doesnt exist
+    defaultData.pollingTime; //set default value if doesnt exist
   const field = messageData?.parameters?.field;
   const value = messageData?.parameters?.value;
   const { updateRecordField, getRecordFields } = useRecordData();
   const [latched, setLatched] = useState(false);
   let globalInterval: NodeJS.Timeout | null;
 
-  const fetchAndSetInitialState = async () => {
+  const fetchDataAndSetCorrectState = async () => {
+    //takes record fields data and checks if the field's value is the same as the desired one
     const res = await getRecordFields();
     if (field) {
       const valuesTheSame = res[field].toString() === value;
 
-      if (!valuesTheSame) clearGlobalInterval();
+      if (!valuesTheSame && globalInterval) clearGlobalInterval(); //if values are different and interval exists, clear it
       setButtonIsLatchedAndStatus(
         valuesTheSame,
-        globalInterval ? -1 : valuesTheSame ? 0 : 1 //if the data are processing, set the button to processing. Otherwise set enabled/disabled
+        globalInterval ? -1 : valuesTheSame ? 0 : 1 //if the data are being processing, set the button to processing. Otherwise set enabled/disabled
       );
     }
   };
@@ -51,6 +48,7 @@ const ButtonWrapper = ({
   };
 
   const clearGlobalInterval = () => {
+    //clears the interval and sets the button to disabled
     if (globalInterval) {
       clearInterval(globalInterval);
       globalInterval = null;
@@ -63,10 +61,10 @@ const ButtonWrapper = ({
     if (pollingTime && !shouldLatch) {
       //if button is not latching and polling time is set
       setButtonIsLatchedAndStatus(true, -1); //set button to processing
-      globalInterval = setInterval(fetchAndSetInitialState, 2000);
+      globalInterval = setInterval(fetchDataAndSetCorrectState, 2000);
       setTimeout(() => {
         clearGlobalInterval();
-      }, pollingTime * 1000);
+      }, pollingTime * 1000); //clear interval after polling time seconds
     } else setButtonIsLatchedAndStatus(status === 200, status === 200 ? 0 : 1); //when latching == true the button will be disabled if the operation was successfull
   };
 
@@ -85,7 +83,7 @@ const ButtonWrapper = ({
       messageData.object_record_meta.record_id &&
       messageData.user_details.access_token
     ) {
-      fetchAndSetInitialState(); //load the initial state of the button (check if current value is the same as desired one)
+      fetchDataAndSetCorrectState(); //load the initial state of the button (check if current value is the same as desired one)
     }
   }, [
     messageData?.object_record_meta.record_id,
@@ -98,9 +96,9 @@ const ButtonWrapper = ({
       <Button
         type="primary"
         style={{
-          backgroundColor: colour ?? "#028fdf",
-          height: height ?? "30px",
-          width: width ?? "80px",
+          backgroundColor: colour ?? defaultStyles.colour,
+          height: height ?? defaultStyles.height,
+          width: width ?? defaultStyles.width,
         }}
         onClick={() => onClick()}
         className={`buttonBasicView ${latched ? "disabledButton" : ""}`}
@@ -108,11 +106,11 @@ const ButtonWrapper = ({
       >
         <Typography.Text
           ellipsis={{
-            tooltip: label ?? "Button",
+            tooltip: label ?? defaultData.label,
           }}
           className="labelEllipsis"
         >
-          {label ?? "Button"}
+          {label ?? defaultData.label}
         </Typography.Text>
       </Button>
     </div>

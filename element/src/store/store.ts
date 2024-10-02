@@ -1,24 +1,7 @@
 import { create } from "zustand";
 import { MessageData } from "../types/interfaces";
 import { produce } from "immer";
-
-type Store = {
-  messageData: MessageData | null;
-  storeError: StoreError | null;
-  refreshToken: string;
-  isLoading: boolean;
-  setIsLoading: (loading: boolean) => void;
-  setMessageData: (newMsgData: MessageData | null) => void;
-  addStoreError: (newMsgData: StoreError) => void;
-  setAccessToken: (newToken: string) => void;
-  setRefreshToken: (newToken: string) => void;
-  resetErrors: () => void;
-};
-
-interface StoreError {
-  name: string;
-  message: string;
-}
+import { Store, StoreError } from "./types";
 
 export const useMsgDataStore = create<Store>((set) => ({
   messageData: null,
@@ -34,6 +17,7 @@ export const useMsgDataStore = create<Store>((set) => ({
   setAccessToken: (newToken: string) =>
     set(
       produce((state: Store) => {
+        //used immer to simplify changing specific property of the state
         if (state.messageData?.user_details)
           state.messageData.user_details.access_token = newToken;
       })

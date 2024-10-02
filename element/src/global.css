@@ -1,12 +1,8 @@
 body {
-    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    color: rgb(46, 63, 87);
-}
-
-th:not(:last-child) {
-    border-right: solid 2px #D2D9E7;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: rgb(46, 63, 87);
 }
 
 /* td, th{
@@ -33,28 +29,4 @@ th:not(:last-child) {
 *::-webkit-scrollbar-thumb {
   border-radius: 40px;
   border: 4px solid #ffffff;
-}
-
-.form-builder::-webkit-scrollbar-thumb {
-  border: 8px solid #ffffff;
-  border-radius: 40px;
-  width: 23px;
-}
-
-tbody tr:nth-child(odd) {
-}
-
-tbody tr:hover{
-  cursor: pointer;
-  border-top: solid 2px #D2D9E7;
-  border-bottom:  solid 2px #D2D9E7;
-}
-
-#table__view-record:hover {
-  filter: brightness(1.2);
-}
-
-#table__view-record-cell{
-  width: 150px;
-  min-width: 144px;
 }

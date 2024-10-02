@@ -1,42 +1,37 @@
 import { ApiEndpoint } from "../types/enums";
-import { LoginRs } from "../types/interfaces";
-import axios, { AxiosError } from "axios";
-
-interface LoginArgs {
-  data: { username: string; password: string };
-  baseUrl: string;
-}
+import { AxiosError } from "axios";
+import { LoginArgs, LoginRs } from "../types/interfaces";
+import { useCustomAxios } from "../interceptors/config";
 
 export const useZustandHooks = () => {
-  const useUserLogin = async ({
-    data,
-    baseUrl,
-  }: LoginArgs): Promise<LoginRs | AxiosError> => {
+  const { axios } = useCustomAxios();
+
+  const logIn = async ({ data }: LoginArgs): Promise<LoginRs | AxiosError> => {
     try {
-      const response = await axios.post(`${baseUrl}${ApiEndpoint.Login}`, data);
+      const response = await axios.post(ApiEndpoint.Login, data);
+
       return response.data as LoginRs;
     } catch (error) {
-      return error as AxiosError;
+      const err = error as AxiosError;
+      throw err;
     }
   };
 
-  const userRefreshTheRefreshToken = async ({
-    baseUrl,
+  const refreshToken = async ({
     refreshToken,
   }: {
-    baseUrl: string;
     refreshToken: string;
   }): Promise<LoginRs | AxiosError> => {
     try {
-      const response = await axios.post(
-        `${baseUrl}${ApiEndpoint.RefreshToken}`,
-        { refresh: refreshToken }
-      );
+      const response = await axios.post(ApiEndpoint.RefreshToken, {
+        refresh: refreshToken,
+      });
 
       return response.data as LoginRs;
     } catch (error) {
-      return error as AxiosError;
+      const err = error as AxiosError;
+      throw err;
     }
   };
-  return { useUserLogin, userRefreshTheRefreshToken };
+  return { logIn, refreshToken };
 };

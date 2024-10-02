@@ -11,26 +11,6 @@ export interface LoginArgs {
     username: string;
     password: string;
   };
-  baseUrl: string;
-}
-
-export interface UserInfo {
-  id: number;
-  username: string;
-  account_type: string;
-  first_name: string;
-  last_name: string;
-  job_title: string;
-  company_name: string;
-  phone: string;
-  mobile: string;
-  status: string;
-  roles: number[];
-}
-
-export interface UserCredentials {
-  username: string;
-  password: string;
 }
 
 interface UserDetails {
@@ -65,7 +45,7 @@ export interface ParameterData {
   colour?: string;
   latching?: boolean;
   polling_time?: number;
-  message_style?: string;
+  message_style?: "left" | "top" | "bottom";
   message_processing?: string;
   message_enabled?: string;
   message_disabled?: string;
@@ -77,110 +57,4 @@ export interface MessageData {
   object_record_meta: ObjectRecordMeta;
   component_parameters: ComponentParameters;
   parameters: ParameterData;
-}
-
-export interface ElementContext {
-  messageData: MessageData | undefined;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  error: string;
-  setError: React.Dispatch<React.SetStateAction<string>>;
-  accessToken: string | undefined;
-}
-
-export interface ErrorProps {
-  message: string;
-}
-
-export interface Record {
-  [prop: string]: string | number;
-}
-
-export interface ApiData {
-  limit: number;
-  offset: number;
-  filtered_count: number;
-  total_count: number;
-  next: null | string;
-  previous: null | string;
-  results: Record[];
-}
-
-export interface InfiniteScrollData {
-  dataLength: number;
-  hasMore: boolean;
-  next: null | string;
-}
-
-export interface SelectedRecord {
-  id: number;
-  fields?: string;
-  value?: string;
-}
-
-export interface List {
-  fieldAlias: string;
-  value: string | number;
-  fieldName: string;
-}
-
-interface ApiResults {
-  id: number;
-  object_name: string;
-  object_class: number;
-  created_at: string;
-  created_by: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    username: string;
-    company_name: string;
-    is_deleted: boolean;
-    account_type: string;
-  };
-  modified_at: string;
-  modified_by: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    username: string;
-    company_name: string;
-    is_deleted: boolean;
-    account_type: string;
-  };
-  _meta: {
-    permissions: {
-      list: boolean;
-      view: boolean;
-      edit: boolean;
-      create: boolean;
-      delete: boolean;
-      edit_owners: boolean;
-      view_owners: boolean;
-      tasks: {
-        list: boolean;
-        view: boolean;
-        edit: boolean;
-        delete: boolean;
-        create: boolean;
-        complete: boolean;
-        assign: boolean;
-      };
-    };
-    labels: {
-      object_class: string;
-    };
-    users: null | string;
-  };
-  [prop: string]: unknown;
-}
-
-export interface ObjectRecordApi {
-  limit: number;
-  offset: number;
-  filtered_count: number;
-  total_count: number;
-  next: null | string;
-  previous: null | string;
-  results: ApiResults[];
 }

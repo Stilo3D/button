@@ -51,17 +51,17 @@
     },
     {
       "parameter_name": "message_disabled",
-      "parameter_description": "",
+      "parameter_description": "Message displayed when the action is not possible (string)",
       "parameter_type": "string"
     },
     {
       "parameter_name": "message_enabled ",
-      "parameter_description": "",
+      "parameter_description": "Message displayed when the action is possible (string)",
       "parameter_type": "string"
     },
     {
       "parameter_name": "message_processing",
-      "parameter_description": "",
+      "parameter_description": "Message displayed when user is waiting for the action to be completed (string)",
       "parameter_type": "string"
     }
   ]

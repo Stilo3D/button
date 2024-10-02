@@ -13,9 +13,7 @@ const App = ({ messageData }: { messageData: MessageData }) => {
   const isLoading = useMsgDataStore((state) => state.isLoading);
 
   useEffect(() => {
-    if (messageData) {
-      setMessageData(messageData);
-    }
+    if (messageData) setMessageData(messageData);
   }, [messageData, setMessageData]);
 
   useMessageData();

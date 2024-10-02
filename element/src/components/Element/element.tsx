@@ -4,6 +4,7 @@ import { useMsgDataStore } from "../../store/store";
 import "./element.css";
 import { displayMessageAtCorrectPosition } from "./utils/utils";
 import { useState } from "react";
+import { defaultData } from "./defaults/defaultData";
 
 export const Element = () => {
   const msgDataFromStore = useMsgDataStore((state) => state.messageData);
@@ -13,7 +14,7 @@ export const Element = () => {
     message_enabled,
     message_disabled,
     message_processing,
-    message_style = "right",
+    message_style = defaultData.message_style,
   } = parameters ?? {};
   const [buttonStatus, setButtonStatus] = useState<number>(1); //1 enabled, 0 disabled, -1 processing
 

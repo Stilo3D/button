@@ -15,20 +15,17 @@ export const useGetAccessToken = () => {
   );
   const refreshToken = useMsgDataStore((state) => state.refreshToken);
   const baseUrl = useMsgDataStore((state) => state.messageData?.endpoint) ?? "";
-  const { useUserLogin, userRefreshTheRefreshToken } = useZustandHooks();
+  const { logIn, refreshToken: refreshTheRefToken } = useZustandHooks();
   const setIsLoading = useMsgDataStore((state) => state.setIsLoading);
-
-  // the number of seconds the token is valid for
-  const tokenValidFor = useMemo(() => 4.5 * 60, []);
+  const tokenValidFor = useMemo(() => 4.5 * 60, []); // the number of seconds the token is valid for
 
   const handleRefreshToken = async () => {
     if (tokenExpires > -1) {
       if (dayjs().unix() > tokenExpires) {
         console.log("token expiring soon refetch new token.");
         // Refetch the token and save it into the redux
-        const token = await userRefreshTheRefreshToken({
+        const token = await refreshTheRefToken({
           refreshToken,
-          baseUrl,
         });
         if ("access" in token) {
           setAccessToken(token.access);
@@ -56,12 +53,11 @@ export const useGetAccessToken = () => {
 
   const logInLocally = async () => {
     setIsLoading(true);
-    const token = await useUserLogin({
+    const token = await logIn({
       data: {
         username: USER_NAME ?? "",
         password: USER_PASSWORD ?? "",
       },
-      baseUrl,
     });
     if ("access" in token) {
       // set the token expiry time

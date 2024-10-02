@@ -1,7 +1,9 @@
+import { ApiEndpoint } from "../types/enums";
+
 export const apiPathBuilder = () => {
   const getRecordPath = (
     recordId: number | undefined
-  ) => `/api/object-records/${recordId}/`;
+  ) => `${ApiEndpoint.Record}${recordId}/`;
 
   return { getRecordPath };
 };
