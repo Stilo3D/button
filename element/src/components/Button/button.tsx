@@ -31,7 +31,9 @@ const ButtonWrapper = ({
   const fetchDataAndSetCorrectState = async () => {
     //takes record fields data and checks if the field's value is the same as the desired one
     const res = await getRecordFields();
+    console.log("res", res);
     if (field && res[field]) {
+      console.log("res[field]", res[field], "field", field, "value", value);
       const valuesTheSame = res[field].toString() === value;
 
       if (!valuesTheSame && globalInterval) clearGlobalInterval(); //if values are different and interval exists, clear it

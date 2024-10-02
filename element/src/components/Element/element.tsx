@@ -19,6 +19,8 @@ export const Element = () => {
   const [buttonStatus, setButtonStatus] = useState<number>(1); //1 enabled, 0 disabled, -1 processing
 
   const displayCorrectMessage = () => {
+    console.log("buttonStatus", buttonStatus);
+    console.log("parameters", parameters);
     switch (buttonStatus) {
       case 1:
         return message_enabled;
