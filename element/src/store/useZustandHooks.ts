@@ -7,7 +7,7 @@ interface LoginArgs {
   baseUrl: string;
 }
 
-export const zustandHooks = () => {
+export const useZustandHooks = () => {
   const useUserLogin = async ({
     data,
     baseUrl,

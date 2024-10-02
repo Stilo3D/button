@@ -16,7 +16,7 @@ const App = ({ messageData }: { messageData: MessageData }) => {
     if (messageData) {
       setMessageData(messageData);
     }
-  }, [messageData]);
+  }, [messageData, setMessageData]);
 
   useMessageData();
   useGetAccessToken(); // used to updated the access token when re passed into the iframe window.

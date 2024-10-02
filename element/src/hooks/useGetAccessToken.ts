@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import dayjs from "dayjs";
 import { USER_NAME, USER_PASSWORD } from "../consts";
 import { useMsgDataStore } from "../store/store";
-import { zustandHooks } from "../store/useZustandHooks";
 import { AxiosError } from "axios";
+import { useZustandHooks } from "../store/useZustandHooks";
 
 export const useGetAccessToken = () => {
   const setAccessToken = useMsgDataStore((state) => state.setAccessToken);
@@ -15,7 +15,7 @@ export const useGetAccessToken = () => {
   );
   const refreshToken = useMsgDataStore((state) => state.refreshToken);
   const baseUrl = useMsgDataStore((state) => state.messageData?.endpoint) ?? "";
-  const { useUserLogin, userRefreshTheRefreshToken } = zustandHooks();
+  const { useUserLogin, userRefreshTheRefreshToken } = useZustandHooks();
   const setIsLoading = useMsgDataStore((state) => state.setIsLoading);
 
   // the number of seconds the token is valid for
@@ -54,6 +54,24 @@ export const useGetAccessToken = () => {
     };
   }, [tokenExpires]);
 
+  const logInLocally = async () => {
+    setIsLoading(true);
+    const token = await useUserLogin({
+      data: {
+        username: USER_NAME ?? "",
+        password: USER_PASSWORD ?? "",
+      },
+      baseUrl,
+    });
+    if ("access" in token) {
+      // set the token expiry time
+      setTokenExpires(dayjs().unix() + tokenValidFor);
+      setAccessToken(token.access);
+      setRefreshToken(token.refresh);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     if (
       !accessToken &&
@@ -61,24 +79,7 @@ export const useGetAccessToken = () => {
       USER_NAME &&
       USER_PASSWORD &&
       baseUrl
-    ) {
-      (async () => {
-        setIsLoading(true);
-        const token = await useUserLogin({
-          data: {
-            username: USER_NAME,
-            password: USER_PASSWORD,
-          },
-          baseUrl,
-        });
-        if ("access" in token) {
-          // set the token expiry time
-          setTokenExpires(dayjs().unix() + tokenValidFor);
-          setAccessToken(token.access);
-          setRefreshToken(token.refresh);
-        }
-        setIsLoading(false);
-      })();
-    }
+    )
+      logInLocally();
   }, [accessToken, baseUrl]);
 };

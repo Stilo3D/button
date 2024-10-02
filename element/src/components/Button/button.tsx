@@ -1,10 +1,9 @@
 import { Button, Typography } from "antd";
 import "./button.css";
 import { useMsgDataStore } from "../../store/store";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useUpdateRecordData } from "./hooks/useUpdateRecordField";
 import { useGetRecordData } from "./hooks/usetGetRecordData";
-import { AxiosError } from "axios";
 
 type ButtonProps = {
   label?: string;
@@ -33,8 +32,7 @@ const ButtonWrapper = ({
   const { updateRecordField } = useUpdateRecordData();
   const [latched, setLatched] = useState(false);
   const { getRecordFields } = useGetRecordData();
-  var globalInterval: NodeJS.Timeout | null;
-  var xd;
+  let globalInterval: NodeJS.Timeout | null;
 
   const fetchAndSetInitialState = async () => {
     const res = await getRecordFields();

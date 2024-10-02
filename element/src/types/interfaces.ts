@@ -172,7 +172,7 @@ interface ApiResults {
     };
     users: null | string;
   };
-  [prop: string]: any;
+  [prop: string]: unknown;
 }
 
 export interface ObjectRecordApi {
