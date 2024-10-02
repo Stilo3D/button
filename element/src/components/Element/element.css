@@ -1,0 +1,26 @@
+.elementMessage {
+  margin: 0 8px;
+}
+
+.elementContainerMsgRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.elementContainerMsgLeft {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.elementContainerMsgTop {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.elementContainerMsgBottom {
+  display: flex;
+  flex-direction: column;
+}

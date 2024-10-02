@@ -1,0 +1,68 @@
+{
+  "version": "2.0.1",
+  "logo": "https://www.autologyx.com/wp-content/uploads/2020/09/favicon.png",
+  "publisher": "ALX",
+  "publisher_url": "https://www.autologyx.com/",
+  "parameters": [
+    {
+      "parameter_name": "colour",
+      "parameter_description": "Enter a colour of the button (hex value)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "label",
+      "parameter_description": "Enter a button label (string)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "height",
+      "parameter_description": "Enter a button height (px unit)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "width",
+      "parameter_description": "Enter a button width (px unit)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "field",
+      "parameter_description": "Enter a field to manipulate (field alias)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "value",
+      "parameter_description": "Enter a new field value (string)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "latching",
+      "parameter_description": "Should the button be latching or not (boolean)",
+      "parameter_type": "boolean"
+    },
+    {
+      "parameter_name": "polling_time",
+      "parameter_description": "The time the system is checking if the sequence has been finished (number - seconds)",
+      "parameter_type": "integer"
+    },
+    {
+      "parameter_name": "message_style",
+      "parameter_description": "Position of the message (string - left/right/top/bottom)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "message_disabled",
+      "parameter_description": "Message displayed when the action is not possible (string)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "message_enabled ",
+      "parameter_description": "Message displayed when the action is possible (string)",
+      "parameter_type": "string"
+    },
+    {
+      "parameter_name": "message_processing",
+      "parameter_description": "Message displayed when user is waiting for the action to be completed (string)",
+      "parameter_type": "string"
+    }
+  ]
+}
