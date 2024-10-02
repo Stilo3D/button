@@ -31,21 +31,27 @@
             user_name: "",
           },
           object_record_meta: {
-            class_id: "661",
-            record_id: "2499",
+            class_id: "9",
+            record_id: "357260",
           },
           endpoint: "http://localhost:3001", //same port as the proxy
           component_parameters: [],
           parameters: {
-            field: "field_checkbox",
+            field: "field_monitored",
             value: "true",
-            latching: "false",
-            polling_time: "20",
-            message_enabled: "The text is provided for ENABLED button",
-            // label: "Elementgfdserftgydfdgtt",
-            // width: "120px",
-            // height: "110px",
-            // colour: "#333333",
+            latching: true,
+            polling_time: 25,
+            message_style: "right",
+            message_enabled:
+              "The button is enabled for you to click. Please feel free to do that",
+            message_disabled:
+              "The button is disabled as the operation is not permitted for you",
+            message_processing:
+              "The button is processing some data so please hold on",
+            label: "Elementgfdserftgydfdgtt",
+            width: "50%",
+            height: "200%",
+            colour: "#333333",
             // primary_color: "#5A88DB",
             // secondary_color: "#7C8664",
             // tertiary_color: "#DB6D5A",

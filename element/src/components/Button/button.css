@@ -8,7 +8,7 @@
 }
 
 .buttonContainer {
-  margin: 10px;
+  margin: 8px;
 }
 
 .labelEllipsis {
@@ -21,14 +21,3 @@
   cursor: not-allowed;
   box-shadow: none !important;
 }
-
-/* Latching equal to false
-The user opens the record form and button checks if the field has the desired value. If yes, its disabled. If not, it is enabled. 
-When user clicks on it, the operation is run and the user sees disabled button with the message about processing
-The button checks the state of the record each 2 s
-After polling time, the checking is stopped and the button remains :disabled+
-
-Latching equal to true
-The user opens the record form and button checks if the field has the desired value. If yes, its disabled. If not, it is enabled. 
-When user clicks on it, the operation is run and the user sees disabled button with the message about processing. 
-The user can refresh the page to refresh the button that will check the value of the field again */

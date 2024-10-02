@@ -65,8 +65,9 @@ export interface ParameterData {
   colour?: string;
   latching?: boolean;
   polling_time?: number;
+  message_style?: string;
   message_processing?: string;
-  message_enabled ?: string;
+  message_enabled?: string;
   message_disabled?: string;
 }
 

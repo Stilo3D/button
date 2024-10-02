@@ -45,6 +45,11 @@
       "parameter_type": "number"
     },
     {
+      "parameter_name": "message_style",
+      "parameter_description": "Position of the message (string - left/right/top/bottom)",
+      "parameter_type": "string"
+    },
+    {
       "parameter_name": "message_disabled",
       "parameter_description": "",
       "parameter_type": "string"

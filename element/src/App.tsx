@@ -1,11 +1,11 @@
 import { useMessageData } from "./hooks/useMessageData";
-import Element from "./components/Element";
 import { MessageData } from "./types/interfaces";
 import { useEffect } from "react";
 import { useGetAccessToken } from "./hooks/useGetAccessToken";
 import Loader from "./components/Loader";
 import { Alert } from "antd";
 import { useMsgDataStore } from "./store/store";
+import { Element } from "./components/Element/element";
 
 const App = ({ messageData }: { messageData: MessageData }) => {
   const setMessageData = useMsgDataStore((state) => state.setMessageData);
