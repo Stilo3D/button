@@ -2,8 +2,7 @@ import { Button, Typography } from "antd";
 import "./button.css";
 import { useMsgDataStore } from "../../store/store";
 import { useEffect, useState } from "react";
-import { useUpdateRecordData } from "./hooks/useUpdateRecordField";
-import { useGetRecordData } from "./hooks/usetGetRecordData";
+import { useRecordData } from "./hooks/useRecordData";
 
 type ButtonProps = {
   label?: string;
@@ -29,9 +28,8 @@ const ButtonWrapper = ({
     10; //set default value if doesnt exist
   const field = messageData?.parameters?.field;
   const value = messageData?.parameters?.value;
-  const { updateRecordField } = useUpdateRecordData();
+  const { updateRecordField, getRecordFields } = useRecordData();
   const [latched, setLatched] = useState(false);
-  const { getRecordFields } = useGetRecordData();
   let globalInterval: NodeJS.Timeout | null;
 
   const fetchAndSetInitialState = async () => {

@@ -1,8 +1,7 @@
-export const apiEndpointBuilder = () => {
-  const getRecordFieldsPath = (
-    baseUrl: string | undefined,
+export const apiPathBuilder = () => {
+  const getRecordPath = (
     recordId: number | undefined
-  ) => `${baseUrl}/api/object-records/${recordId}/`;
+  ) => `/api/object-records/${recordId}/`;
 
-  return { getRecordFieldsPath };
+  return { getRecordPath };
 };
