@@ -33,7 +33,7 @@ const ButtonWrapper = ({
     const res = await getRecordFields();
     console.log("res", res);
     console.log("field", field, "res[field]", res[field!]);
-    if (field && res[field]) {
+    if (field && res[field] !== undefined) {
       console.log("res[field]", res[field], "field", field, "value", value);
       const valuesTheSame = res[field].toString() === value;
       console.log("valuesTheSame", valuesTheSame);
