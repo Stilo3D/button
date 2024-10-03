@@ -3,7 +3,7 @@ import ButtonWrapper from "../Button/button";
 import { useMsgDataStore } from "../../store/store";
 import "./element.css";
 import { displayMessageAtCorrectPosition } from "./utils/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { defaultData } from "./defaults/defaultData";
 
 export const Element = () => {
@@ -17,21 +17,43 @@ export const Element = () => {
     message_style = defaultData.message_style,
   } = parameters ?? {};
   const [buttonStatus, setButtonStatus] = useState<number>(1); //1 enabled, 0 disabled, -1 processing
+  const [message, setMessage] = useState<string>("");
 
-  const displayCorrectMessage = () => {
+  const loadMessage = () => {
     console.log("buttonStatus", buttonStatus);
     console.log("parameters", parameters);
-    switch (buttonStatus) {
-      case 1:
-        return message_enabled;
-      case -1:
-        return message_processing;
-      case 0:
-        return message_disabled;
-      default:
-        return "";
-    }
+    console.log(
+      "messages",
+      message_enabled,
+      message_disabled,
+      message_processing
+    );
+    if (message_disabled && message_processing && message_enabled)
+      switch (buttonStatus) {
+        case 1:
+          console.log("case 1");
+          setMessage(message_enabled);
+          return;
+        case -1:
+          console.log("case -1");
+
+          setMessage(message_processing);
+          return;
+        case 0:
+          console.log("case 0");
+
+          setMessage(message_disabled);
+          return;
+        default:
+          console.log("case def");
+
+          return "";
+      }
   };
+
+  useEffect(() => {
+    loadMessage();
+  }, [message_disabled, message_processing, message_enabled, buttonStatus]);
 
   return (
     <>
@@ -46,7 +68,7 @@ export const Element = () => {
           />
         </div>
         <div className="elementMessage">
-          <Typography.Text>{displayCorrectMessage()}</Typography.Text>
+          <Typography.Text>{message}</Typography.Text>
         </div>
       </div>
     </>

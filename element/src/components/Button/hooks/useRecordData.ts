@@ -44,5 +44,33 @@ export const useRecordData = () => {
       throw error;
     }
   };
+
+  // const addFieldToObj = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       `/api/object-classes/${objClassId}/fields/`,
+
+  //       {
+  //         alias: `${Math.random()}l${Math.random()}`.replace(/\./g, "_"),
+  //         type: "string",
+  //         max_length: 114,
+  //         label: `lab${Math.random()}`.replace(/\./g, "_"),
+  //         is_identifier: false,
+  //         order: 3,
+  //       }
+  //     );
+  //     console.log("added field to obj response", response);
+
+  //     return { data: response.data, status: response.status };
+  //   } catch (error) {
+  //     const errorData = error as AxiosError;
+  //     addError({
+  //       name: "Update Record Field Error",
+  //       message:
+  //         errorData.message + ". Content: " + errorData.request?.response,
+  //     });
+  //     throw error;
+  //   }
+  // };
   return { updateRecordField, getRecordFields };
 };
