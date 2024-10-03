@@ -55,7 +55,7 @@
       "parameter_type": "string"
     },
     {
-      "parameter_name": "message_enabled ",
+      "parameter_name": "message_enabled",
       "parameter_description": "Message displayed when the action is possible (string)",
       "parameter_type": "string"
     },
