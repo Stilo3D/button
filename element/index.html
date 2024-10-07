@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Boilerplate</title>
+  </head>
+  <style>
+    /* custom.css */
+    /* body {
+      overflow: hidden;
+    } */
+    .scrollbar-none::-webkit-scrollbar {
+      width: 0.5em; /* Adjust the width as per your preference */
+    }
+  </style>
+  <body class="scrollbar-none">
+    <div id="root" class="scrollbar-none"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Uncomment the below for testing with the parameters passed in to the messageData -->
+    <script type="module" src="./src/mockingScript.ts"></script>
+  </body>
+</html>
