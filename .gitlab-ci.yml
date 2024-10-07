@@ -1,0 +1,13 @@
+include:
+  - project: techops/ci_templates
+    ref: main
+    file:
+      - trivy_scan.yaml
+stages:
+  - quality
+
+trivy:
+  extends: trivy_scan
+  stage: quality
+  rules:
+    - when: manual
