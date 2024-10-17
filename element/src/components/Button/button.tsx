@@ -18,9 +18,9 @@ const Button = ({
       <AntdButton
         type="primary"
         style={{
-          backgroundColor: color ?? defaultStyles.color,
-          height: height ?? defaultStyles.height,
-          width: width ?? defaultStyles.width,
+          backgroundColor: color || defaultStyles.color,
+          height: height || defaultStyles.height,
+          width: width || defaultStyles.width,
         }}
         onClick={onClicked}
         className={clsx("buttonBasicView", latched && "disabledButton")}
@@ -28,11 +28,11 @@ const Button = ({
       >
         <Typography.Text
           ellipsis={{
-            tooltip: label ?? defaultData.label,
+            tooltip: label || defaultData.label,
           }}
           className="labelEllipsis"
         >
-          {label ?? defaultData.label}
+          {label || defaultData.label}
         </Typography.Text>
       </AntdButton>
     </div>
