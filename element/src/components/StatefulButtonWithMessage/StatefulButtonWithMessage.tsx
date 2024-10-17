@@ -136,6 +136,13 @@ export const StatefulButtonWithMessage = () => {
     fetchDataAndSetCorrectState(); //load the initial state of the button (check if current value is the same as desired one)
   }, []);
 
+  useEffect(() => {
+    console.log("efffect color", color);
+  }, [color]);
+  useEffect(() => {
+    console.log("efffect params", parameters);
+  }, [parameters]);
+
   return (
     <>
       <div className={displayMessageAtCorrectPosition(message_style)}>
