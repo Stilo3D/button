@@ -18,18 +18,15 @@ setTimeout(() => {
       field: "field_my_check",
       value: "true",
       latching: false,
-      polling_time: 16,
-      message_style: "top",
+      message_style: "bottom",
       message_enabled:
         "The button is enabled for you to click. Please feel free to do that",
       message_disabled:
         "The button is disabled as the operation is not permitted for you",
-      message_processing:
-        "The button is processing some data so please hold on",
-      label: "Element",
-      // width: "50%",
+      label: "Click and change",
+      // color: "#543544",
+      width: "200px",
       // height: "200%",
-      color: "#543544",
       // primary_color: "#5A88DB",
       // secondary_color: "#7C8664",
       // tertiary_color: "#DB6D5A",
