@@ -15,8 +15,8 @@ setTimeout(() => {
     endpoint: "http://localhost:3001", //same port as the proxy
     component_parameters: [],
     parameters: {
-      field: "field_my_check",
-      value: "true",
+      field: "field_industry",
+      value: "Other",
       latching: false,
       message_style: "bottom",
       message_enabled:
@@ -24,7 +24,7 @@ setTimeout(() => {
       message_disabled:
         "The button is disabled as the operation is not permitted for you",
       label: "Click and change",
-      // color: "#543544",
+      color: "#543544",
       width: "200px",
       // height: "200%",
       // primary_color: "#5A88DB",

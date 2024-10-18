@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useRecordData } from "../Button/hooks/useRecordData";
 import { defaultData } from "./defaults/defaultData";
 import { defaultStyles } from "./defaults/defaultStyles";
-import { ButtonState } from "./enums";
 import Button from "../Button/button";
+import Loader from "../Loader";
 
 /**
  * Component that displays a button with a message that changes its state based on the response from the API (dependent on latching prop)
@@ -28,52 +28,30 @@ export const StatefulButtonWithMessage = () => {
     message_style = defaultStyles.message_style,
   } = parameters ?? {};
   const { latching: isButtonLatching } = parameters ?? defaultData;
-  const [buttonStatus, setButtonStatus] = useState<ButtonState>(
-    ButtonState.Enabled
-  );
   const [latched, setLatched] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
   const { updateRecordField, getRecordFields } = useRecordData();
   const addError = useMsgDataStore((state) => state.addStoreError);
 
   const displayCorrectMessage = () => {
-    switch (buttonStatus) {
-      case ButtonState.Enabled:
-        return message_enabled;
-      case ButtonState.Disabled:
-        return message_disabled;
-      default:
-        return "";
+    if (latched) {
+      return message_disabled;
     }
-  };
 
-  const setButtonIsLatchedAndStatus = (
-    isLatched: boolean,
-    status: ButtonState
-  ) => {
-    setLatched(isLatched);
-    setButtonStatus(status);
+    return message_enabled;
   };
 
   // Takes record field data and checks if the field's value is the same as the desired one + sets the button state
   const fetchDataAndSetToDisabledIfFieldValueIsTheSame = async () => {
     const res = await getRecordFields();
+
+    //value of the field may be e.g. false, so it is needed to check if it is not undefined
     if (field && res[field] !== undefined) {
-      //value of the field may be e.g. false, so it is needed to check if it is not undefined
       const valuesTheSame = res[field].toString() === value;
-
-      setButtonIsLatchedAndStatus(
-        valuesTheSame,
-        valuesTheSame ? ButtonState.Disabled : ButtonState.Enabled
-      );
+      setLatched(valuesTheSame);
     }
-  };
 
-  // Adjusts the behavior based on the status
-  const adjustButtonBehavior = (status: number) => {
-    setButtonIsLatchedAndStatus(
-      status === 200,
-      status === 200 ? ButtonState.Disabled : ButtonState.Enabled
-    );
+    setDataLoaded(true);
   };
 
   const onClick = async () => {
@@ -82,12 +60,12 @@ export const StatefulButtonWithMessage = () => {
       return;
     }
 
-    //if button is latching, it should be disabled after clicking
+    //if button is latching, it should be disabled after clicking and enabled after the invalid response from the API
     if (isButtonLatching) {
       setLatched(true);
       const response = await updateRecordField(field, value);
       const status = response?.status ?? 0;
-      adjustButtonBehavior(status);
+      setLatched(status === 200 ? true : false);
       return;
     }
 
@@ -97,12 +75,17 @@ export const StatefulButtonWithMessage = () => {
 
   useEffect(() => {
     if (!isButtonLatching) {
+      setDataLoaded(true);
       return;
     }
 
     //load the initial state of the button (check if current value is the same as desired one) only when it is latching
     fetchDataAndSetToDisabledIfFieldValueIsTheSame();
   }, []);
+
+  if (!dataLoaded) {
+    return <Loader />;
+  }
 
   return (
     <>
