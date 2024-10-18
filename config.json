@@ -40,11 +40,6 @@
       "parameter_type": "boolean"
     },
     {
-      "parameter_name": "polling_time",
-      "parameter_description": "The time the system is checking if the sequence has been finished (number - seconds)",
-      "parameter_type": "integer"
-    },
-    {
       "parameter_name": "message_style",
       "parameter_description": "Position of the message (string - left/right/top/bottom)",
       "parameter_type": "string"
@@ -57,11 +52,6 @@
     {
       "parameter_name": "message_disabled",
       "parameter_description": "Message displayed when the action is not possible (string)",
-      "parameter_type": "string"
-    },
-    {
-      "parameter_name": "message_processing",
-      "parameter_description": "Message displayed when user is waiting for the action to be completed (string)",
       "parameter_type": "string"
     }
   ]

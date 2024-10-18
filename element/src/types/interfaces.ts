@@ -43,9 +43,7 @@ export interface ParameterData {
   height?: string;
   color?: string;
   latching?: boolean;
-  polling_time?: number;
   message_style?: "left" | "top" | "bottom";
-  message_processing?: string;
   message_enabled?: string;
   message_disabled?: string;
 }

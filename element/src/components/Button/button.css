@@ -7,6 +7,10 @@
   box-shadow: 0 0 10px #67d1ff;
 }
 
+.buttonBasicView:active {
+  opacity: 0.8; 
+}
+
 .buttonContainer {
   margin: 8px;
 }
