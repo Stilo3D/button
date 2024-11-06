@@ -32,6 +32,9 @@ export const StatefulButtonWithMessage = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const { updateRecordField, getRecordFields } = useRecordData();
   const addError = useMsgDataStore((state) => state.addStoreError);
+  const recordId = useMsgDataStore(
+    (state) => state.messageData?.object_record_meta.record_id
+  );
 
   const displayCorrectMessage = () => {
     if (latched) {
@@ -85,6 +88,11 @@ export const StatefulButtonWithMessage = () => {
 
   if (!dataLoaded) {
     return <Loader />;
+  }
+
+  //Hide the element when opened in create mode
+  if (!recordId) {
+    return null;
   }
 
   return (
