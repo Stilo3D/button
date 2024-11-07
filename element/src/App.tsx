@@ -24,6 +24,7 @@ const App = ({ messageData }: { messageData: MessageData }) => {
 
   //Hide the element when opened in create mode
   if (!recordId) {
+    console.log("No record id found");
     return <StatefulButtonWithMessage isDisabled={true} />;
   }
 
@@ -34,7 +35,8 @@ const App = ({ messageData }: { messageData: MessageData }) => {
   if (isLoading) {
     return <Loader />;
   }
-
+  console.log("recordId", recordId);
+  console.log("messageData", messageData);
   return <StatefulButtonWithMessage />;
 };
 
