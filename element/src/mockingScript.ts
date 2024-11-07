@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "development") {
       component_parameters: [],
       parameters: {
         field: "field_industry",
-        value: "IT",
+        value: "Other",
         latching: true,
         message_style: "bottom",
         message_enabled:

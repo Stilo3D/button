@@ -8,16 +8,15 @@ import { defaultData } from "./defaults/defaultData";
 import { defaultStyles } from "./defaults/defaultStyles";
 import Button from "../Button/button";
 import Loader from "../Loader";
+import { StatefulButtonWithMessageProps } from "./StatefulButtonWithMessage.types";
 
 /**
  * Component that displays a button with a message that changes its state based on the response from the API (dependent on latching prop)
  * @returns Button with message that changes its state based on the response from the API
  */
 export const StatefulButtonWithMessage = ({
-  disabled,
-}: {
-  disabled?: boolean;
-}) => {
+  isDisabled,
+}: StatefulButtonWithMessageProps) => {
   const messageData = useMsgDataStore((state) => state.messageData);
   const parameters = messageData?.parameters;
   const {
@@ -79,7 +78,7 @@ export const StatefulButtonWithMessage = ({
 
   useEffect(() => {
     //If the button is disabled, do not fetch the data
-    if (disabled) {
+    if (isDisabled) {
       setDataLoaded(true);
       return;
     }
@@ -106,12 +105,11 @@ export const StatefulButtonWithMessage = ({
             width={width}
             color={color}
             height={height}
-            latched={disabled || latched} //if the button is disabled, it should be latched
+            latched={isDisabled || latched}
             onClicked={onClick}
           />
         </div>
-        {/* Display message only when the button is not disabled */}
-        {!disabled && (
+        {!isDisabled && (
           <div className="elementMessage">
             <Typography.Text>{displayCorrectMessage()}</Typography.Text>
           </div>
