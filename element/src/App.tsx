@@ -24,9 +24,9 @@ const App = ({ messageData }: { messageData: MessageData }) => {
 
   //Hide the element when opened in create mode
   if (!recordId) {
-    return null;
+    return <StatefulButtonWithMessage disabled={true} />;
   }
-  
+
   if (storeErrors) {
     return <Alert message={storeErrors.message}></Alert>;
   }

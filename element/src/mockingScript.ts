@@ -11,14 +11,14 @@ if (process.env.NODE_ENV === "development") {
       },
       object_record_meta: {
         class_id: "1073",
-        record_id: "5",
+        record_id: "2592",
       },
       endpoint: "http://localhost:3001", //same port as the proxy
       component_parameters: [],
       parameters: {
         field: "field_industry",
-        value: "Other",
-        latching: false,
+        value: "IT",
+        latching: true,
         message_style: "bottom",
         message_enabled:
           "The button is enabled for you to click. Please feel free to do that",
