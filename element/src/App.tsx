@@ -11,6 +11,9 @@ const App = ({ messageData }: { messageData: MessageData }) => {
   const setMessageData = useMsgDataStore((state) => state.setMessageData);
   const storeErrors = useMsgDataStore((state) => state.storeError);
   const isLoading = useMsgDataStore((state) => state.isLoading) ?? true;
+  const recordId = useMsgDataStore(
+    (state) => state.messageData?.object_record_meta.record_id
+  );
 
   useEffect(() => {
     setMessageData(messageData);
@@ -18,6 +21,11 @@ const App = ({ messageData }: { messageData: MessageData }) => {
 
   useMessageDataAccessTokenListener();
   useUserLogin(messageData); // used to updated the access token when re passed into the iframe window.
+
+  //Hide the element when opened in create mode
+  if (!recordId) {
+    return <StatefulButtonWithMessage isDisabled={true} />;
+  }
 
   if (storeErrors) {
     return <Alert message={storeErrors.message}></Alert>;

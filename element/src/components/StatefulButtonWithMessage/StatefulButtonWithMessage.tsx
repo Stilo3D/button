@@ -8,12 +8,15 @@ import { defaultData } from "./defaults/defaultData";
 import { defaultStyles } from "./defaults/defaultStyles";
 import Button from "../Button/button";
 import Loader from "../Loader";
+import { StatefulButtonWithMessageProps } from "./StatefulButtonWithMessage.types";
 
 /**
  * Component that displays a button with a message that changes its state based on the response from the API (dependent on latching prop)
  * @returns Button with message that changes its state based on the response from the API
  */
-export const StatefulButtonWithMessage = () => {
+export const StatefulButtonWithMessage = ({
+  isDisabled,
+}: StatefulButtonWithMessageProps) => {
   const messageData = useMsgDataStore((state) => state.messageData);
   const parameters = messageData?.parameters;
   const {
@@ -32,9 +35,6 @@ export const StatefulButtonWithMessage = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const { updateRecordField, getRecordFields } = useRecordData();
   const addError = useMsgDataStore((state) => state.addStoreError);
-  const recordId = useMsgDataStore(
-    (state) => state.messageData?.object_record_meta.record_id
-  );
 
   const displayCorrectMessage = () => {
     if (latched) {
@@ -77,6 +77,12 @@ export const StatefulButtonWithMessage = () => {
   };
 
   useEffect(() => {
+    //If the button is disabled, do not fetch the data
+    if (isDisabled) {
+      setDataLoaded(true);
+      return;
+    }
+
     if (!isButtonLatching) {
       setDataLoaded(true);
       return;
@@ -90,11 +96,6 @@ export const StatefulButtonWithMessage = () => {
     return <Loader />;
   }
 
-  //Hide the element when opened in create mode
-  if (!recordId) {
-    return null;
-  }
-
   return (
     <>
       <div className={displayMessageAtCorrectPosition(message_style)}>
@@ -104,13 +105,15 @@ export const StatefulButtonWithMessage = () => {
             width={width}
             color={color}
             height={height}
-            latched={latched}
+            latched={isDisabled || latched}
             onClicked={onClick}
           />
         </div>
-        <div className="elementMessage">
-          <Typography.Text>{displayCorrectMessage()}</Typography.Text>
-        </div>
+        {!isDisabled && (
+          <div className="elementMessage">
+            <Typography.Text>{displayCorrectMessage()}</Typography.Text>
+          </div>
+        )}
       </div>
     </>
   );
