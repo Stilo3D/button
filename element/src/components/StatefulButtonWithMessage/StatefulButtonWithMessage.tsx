@@ -46,6 +46,8 @@ export const StatefulButtonWithMessage = ({
 
   // Takes record field data and checks if the field's value is the same as the desired one + sets the button state
   const fetchDataAndSetToDisabledIfFieldValueIsTheSame = async () => {
+    console.log("before res");
+
     const res = await getRecordFields();
 
     console.log("res", res);
@@ -79,18 +81,21 @@ export const StatefulButtonWithMessage = ({
   };
 
   useEffect(() => {
+    console.log("before isdisabled");
     //If the button is disabled, do not fetch the data
     if (isDisabled) {
       setDataLoaded(true);
       console.log("isDisabled", isDisabled);
       return;
     }
+    console.log("before isButtonLatching", isButtonLatching);
 
     if (!isButtonLatching) {
       setDataLoaded(true);
       return;
     }
 
+    console.log("before fetchDataAndSetToDisabledIfFieldValueIsTheSame");
     //load the initial state of the button (check if current value is the same as desired one) only when it is latching
     fetchDataAndSetToDisabledIfFieldValueIsTheSame();
   }, []);

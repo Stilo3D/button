@@ -35,6 +35,6 @@ if (process.env.NODE_ENV === "development") {
         // background_color: "#DEDEDE",
       },
     };
-    window.postMessage(messageData, "http://localhost:5174/");
+    window.postMessage(messageData, "http://localhost:5173/");
   }, 2000);
 }
