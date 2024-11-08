@@ -13,9 +13,9 @@ const App = ({ messageData }: { messageData: MessageData }) => {
   const isLoading = useMsgDataStore((state) => state.isLoading) ?? true;
 
   useEffect(() => {
-    setMessageData(messageData);
     console.log("messageData changed", messageData);
-  }, [messageData, setMessageData]);
+    setMessageData(messageData);
+  }, [messageData]);
 
   useMessageDataAccessTokenListener();
   useUserLogin(messageData); // used to updated the access token when re passed into the iframe window.
