@@ -11,13 +11,13 @@ if (process.env.NODE_ENV === "development") {
       },
       object_record_meta: {
         class_id: "1073",
-        record_id: "2592",
+        record_id: "2517",
       },
       endpoint: "http://localhost:3001", //same port as the proxy
       component_parameters: [],
       parameters: {
-        field: "field_industry",
-        value: "Other",
+        field: "field_some_text",
+        value: "ddddr",
         latching: true,
         message_style: "bottom",
         message_enabled:

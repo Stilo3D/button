@@ -15,10 +15,9 @@ import { StatefulButtonWithMessageProps } from "./StatefulButtonWithMessage.type
  * @returns Button with message that changes its state based on the response from the API
  */
 export const StatefulButtonWithMessage = ({
-  isDisabled,
+  messageData,
 }: StatefulButtonWithMessageProps) => {
-  const messageData = useMsgDataStore((state) => state.messageData);
-  const parameters = messageData?.parameters;
+  const parameters = messageData.parameters;
   const {
     label,
     color,
@@ -32,7 +31,8 @@ export const StatefulButtonWithMessage = ({
   } = parameters ?? {};
   const { latching: isButtonLatching } = parameters ?? defaultData;
   const [latched, setLatched] = useState(false);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const isDisabled = !messageData.object_record_meta.record_id; //If record id is not provided, set flag to true to disable the btn
+  const [isLoading, setIsLoading] = useState(true);
   const { updateRecordField, getRecordFields } = useRecordData();
   const addError = useMsgDataStore((state) => state.addStoreError);
 
@@ -46,19 +46,27 @@ export const StatefulButtonWithMessage = ({
 
   // Takes record field data and checks if the field's value is the same as the desired one + sets the button state
   const fetchDataAndSetToDisabledIfFieldValueIsTheSame = async () => {
-    console.log("before res");
+    if (!isButtonLatching) {
+      setIsLoading(false);
+      return;
+    }
+
+    if (!messageData.object_record_meta.record_id) {
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(true);
 
     const res = await getRecordFields();
 
-    console.log("res", res);
     //value of the field may be e.g. false, so it is needed to check if it is not undefined
     if (field && res[field] !== undefined) {
       const valuesTheSame = res[field].toString() === value;
-      console.log("valuesTheSame", valuesTheSame);
       setLatched(valuesTheSame);
     }
 
-    setDataLoaded(true);
+    setIsLoading(false);
   };
 
   const onClick = async () => {
@@ -81,26 +89,10 @@ export const StatefulButtonWithMessage = ({
   };
 
   useEffect(() => {
-    console.log("before isdisabled");
-    //If the button is disabled, do not fetch the data
-    if (isDisabled) {
-      setDataLoaded(true);
-      console.log("isDisabled", isDisabled);
-      return;
-    }
-    console.log("before isButtonLatching", isButtonLatching);
-
-    if (!isButtonLatching) {
-      setDataLoaded(true);
-      return;
-    }
-
-    console.log("before fetchDataAndSetToDisabledIfFieldValueIsTheSame");
-    //load the initial state of the button (check if current value is the same as desired one) only when it is latching
     fetchDataAndSetToDisabledIfFieldValueIsTheSame();
-  }, []);
+  }, [messageData.object_record_meta.record_id]);
 
-  if (!dataLoaded) {
+  if (isLoading) {
     return <Loader />;
   }
 

@@ -25,7 +25,9 @@ export const useUserLogin = (messageData: MessageData) => {
    * When the app is run in prod mode, set up prod axios config and stop loading
    */
   useEffect(() => {
+    console.log("messageData changed in use hook", messageData);
     if (process.env.NODE_ENV !== "development") {
+      console.log("reinitialize axios config");
       reinitializeAxiosConfig(
         messageData.user_details.access_token,
         messageData.endpoint

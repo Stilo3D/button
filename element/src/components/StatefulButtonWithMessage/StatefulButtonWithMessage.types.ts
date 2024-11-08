@@ -1,3 +1,5 @@
+import { MessageData } from "../../types/interfaces";
+
 export interface StatefulButtonWithMessageProps {
-  isDisabled?: boolean;
+  messageData: MessageData;
 }
