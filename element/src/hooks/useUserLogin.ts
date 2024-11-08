@@ -74,13 +74,7 @@ export const useUserLogin = () => {
   };
 
   useEffect(() => {
-    if (
-      !accessToken &&
-      process.env.NODE_ENV === "development" &&
-      USER_NAME &&
-      USER_PASSWORD &&
-      baseUrl
-    ) {
+    if (!accessToken && USER_NAME && USER_PASSWORD && baseUrl) {
       logInLocally();
     }
   }, [accessToken, baseUrl]);

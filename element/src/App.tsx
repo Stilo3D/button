@@ -19,7 +19,10 @@ const App = ({ messageData }: { messageData: MessageData }) => {
   }, [messageData]);
 
   useMessageDataAccessTokenListener();
-  useUserLogin(); // used to updated the access token when re passed into the iframe window.
+  if (process.env.NODE_ENV === "development") {
+    useUserLogin(); // used to updated the access token when re passed into the iframe window.
+  }
+
   useMessageData(); // used to updated the access token when re passed into the iframe window.
 
   if (storeErrors) {
