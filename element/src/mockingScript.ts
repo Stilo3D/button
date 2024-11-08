@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
       parameters: {
         field: "field_some_text",
         value: "ddddr",
-        latching: true,
+        latching: false,
         message_style: "bottom",
         message_enabled:
           "The button is enabled for you to click. Please feel free to do that",

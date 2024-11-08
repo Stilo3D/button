@@ -5,9 +5,8 @@ import { useMsgDataStore } from "../store/store";
 import { AxiosError } from "axios";
 import { reinitializeAxiosConfig } from "../setups/axios/axiosInstance";
 import { useAuthentication } from "../store/useAuthentication";
-import { MessageData } from "../types/interfaces";
 
-export const useUserLogin = (messageData: MessageData) => {
+export const useUserLogin = () => {
   const setAccessToken = useMsgDataStore((state) => state.setAccessToken);
   const setStoreError = useMsgDataStore((state) => state.addStoreError);
   const setRefreshToken = useMsgDataStore((state) => state.setRefreshToken);
@@ -20,21 +19,6 @@ export const useUserLogin = (messageData: MessageData) => {
   const { logIn, refreshToken: refreshTheRefToken } = useAuthentication();
   const setIsLoading = useMsgDataStore((state) => state.setIsLoading);
   const tokenValidFor = useMemo(() => 4.5 * 60, []); // the number of seconds the token is valid for
-
-  /**
-   * When the app is run in prod mode, set up prod axios config and stop loading
-   */
-  useEffect(() => {
-    console.log("messageData changed in use hook", messageData);
-    if (process.env.NODE_ENV !== "development") {
-      console.log("reinitialize axios config");
-      reinitializeAxiosConfig(
-        messageData.user_details.access_token,
-        messageData.endpoint
-      );
-      setIsLoading(false);
-    }
-  }, [messageData.user_details.access_token, messageData.endpoint]);
 
   const handleRefreshToken = async () => {
     if (tokenExpires > -1) {
